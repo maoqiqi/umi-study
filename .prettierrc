@@ -1,7 +1,12 @@
 {
+  "semi": false,
   "singleQuote": true,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": true,
   "trailingComma": "all",
-  "printWidth": 80,
+  "bracketSpacing": false,
+  "arrowParens": "avoid",
+  "eslintIntegration": false,
   "overrides": [
     {
       "files": ".prettierrc",

@@ -54,7 +54,7 @@ const Todo = props => {
       key: 'operation',
       // width: 160,
       render: (text, record) => (
-        <span>
+        <Fragment>
           <Button type='link' onClick={() => handleShowModal(record)}>
             Edit
           </Button>
@@ -65,7 +65,7 @@ const Todo = props => {
             }>
             <Button type='link'>Delete</Button>
           </Popconfirm>
-        </span>
+        </Fragment>
       ),
     },
   ]

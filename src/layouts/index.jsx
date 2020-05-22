@@ -6,7 +6,7 @@ import Header from './Header'
 
 import './index.less'
 
-const BasicLayout = ({location: {pathname}, dispatch, children}) => {
+const BasicLayout = ({location: {pathname}, children}) => {
   return (
     <Layout className='march-layout'>
       <Layout.Header className='march-header'>

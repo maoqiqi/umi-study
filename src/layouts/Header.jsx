@@ -1,16 +1,21 @@
 import React from 'react'
-import {HomeOutlined, StarOutlined, UserOutlined} from '@ant-design/icons'
+import {
+  HomeOutlined,
+  StarOutlined,
+  UnorderedListOutlined,
+} from '@ant-design/icons'
 import {Button, Menu} from 'antd'
-import {Link} from 'umi'
+import {Link} from 'react-router-dom'
+import {connect} from 'dva'
 
 const data = [
   {route: '', name: 'Home', icon: <HomeOutlined />},
   {route: 'mood', name: '每日心情', icon: <StarOutlined />},
-  {route: 'user', name: 'User', icon: <UserOutlined />},
+  {route: 'todo', name: 'TODO', icon: <UnorderedListOutlined />},
   {route: 'unknown', name: '404'},
 ]
 
-export default ({pathname}) => {
+const Header = ({dispatch, pathname}) => {
   return (
     <div>
       <div className='march-logo'>
@@ -33,12 +38,22 @@ export default ({pathname}) => {
             GitHub
           </a>
         </Menu.Item>
+        <Menu.Item key='dva'>
+          <a
+            href='https://github.com/dvajs/dva'
+            target='_blank'
+            rel='noopener noreferrer'>
+            dva
+          </a>
+        </Menu.Item>
       </Menu>
       <div className='march-login-out'>
-        <Button type='link' onClick={() => console.log('退出')}>
+        <Button type='link' onClick={() => dispatch({type: 'user/logout'})}>
           退出
         </Button>
       </div>
     </div>
   )
 }
+
+export default connect(state => ({errorMsg: state.user.errorMsg}))(Header)

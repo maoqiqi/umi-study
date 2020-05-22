@@ -1,3 +1,4 @@
+```
 .
 ├── dist/                          // 默认的 build 输出目录
 ├── mock/                          // mock 文件所在目录，基于 express
@@ -19,3 +20,4 @@
 ├── .umirc.js                      // umi 配置，同 config/config.js，二选一
 ├── .env                           // 环境变量
 └── package.json
+```

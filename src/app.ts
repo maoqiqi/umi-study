@@ -11,3 +11,10 @@ import {history} from 'umi'
 //     }
 //   })
 // }
+
+export const dva = {
+  config: {
+    onError() {},
+  },
+  plugins: [],
+}

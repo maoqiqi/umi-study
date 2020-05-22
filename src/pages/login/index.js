@@ -1,14 +1,13 @@
 import React, {useState} from 'react'
 import {Alert, Button, Form, Input} from 'antd'
 import {LockOutlined, UserOutlined} from '@ant-design/icons'
+import {connect} from 'dva'
 
-import './index.css'
+import './index.less'
 
-const Login = () => {
+const Login = ({dispatch, loading, errorMsg}) => {
   const [form] = Form.useForm()
   const [disabled, setDisabled] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
 
   const onValuesChange = (changedValues, allValues) => {
     if (Object.keys(allValues).length < 2) return
@@ -24,23 +23,20 @@ const Login = () => {
 
   const onFinish = values => {
     console.log('Received values of form: ', values)
-    setLoading(true)
-    // 登录
-    setTimeout(() => {
-      setLoading(false)
-      setErrorMsg('用户名或密码错误')
-    }, 2000)
+    dispatch({type: 'user/login', payload: {params: values}})
   }
 
   return (
     <div className='login-content'>
-      <h1 style={{textAlign: 'center'}}>用户登录</h1>
-      <Alert
-        style={{marginBottom: 24, display: errorMsg ? 'block' : 'none'}}
-        type='error'
-        showIcon
-        message={errorMsg}
-      />
+      <h2 style={{textAlign: 'center'}}>用户登录</h2>
+      {errorMsg && (
+        <Alert
+          style={{marginBottom: 24}}
+          type='error'
+          showIcon
+          message={errorMsg}
+        />
+      )}
       <Form
         name='login-form'
         form={form}
@@ -80,4 +76,11 @@ const Login = () => {
   )
 }
 
-export default Login
+const mapStateToProps = state => {
+  return {
+    loading: state.loading.models.user,
+    errorMsg: state.user.errorMsg,
+  }
+}
+
+export default connect(mapStateToProps)(Login)

@@ -79,8 +79,8 @@ export default defineConfig({
   ],
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
-    '@primary-color': '#dc6aac',
-    '@link-color': '#dc6aac',
+    '@primary-color': '#5937ac',
+    // '@link-color': '#dc6aac',
     // '@border-radius-base': '2px',
     // '@font-size-base': '16px',
     // '@line-height-base': '1.2',

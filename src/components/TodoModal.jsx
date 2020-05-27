@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {DatePicker, Form, Input, Modal, Select} from 'antd'
-import locale from 'antd/es/date-picker/locale/zh_CN'
+// import locale from 'antd/es/date-picker/locale/zh_CN'
 import moment from 'moment'
 
 export default ({visible, record, onOk, onCancel}) => {
@@ -63,7 +63,8 @@ export default ({visible, record, onOk, onCancel}) => {
           <Input />
         </Form.Item>
         <Form.Item label='Date' name='date'>
-          <DatePicker locale={locale} showToday format={dateFormat} />
+          {/*<DatePicker locale={locale} showToday format={dateFormat} />*/}
+          <DatePicker showToday format={dateFormat} />
         </Form.Item>
       </Form>
     </Modal>
